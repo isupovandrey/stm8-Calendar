@@ -388,9 +388,8 @@ EditDDTL:
 		if(button(KEY_OK)){
 			buff_clear();
 			lcd_str(0, 0, "Update?");
-			uint8_t temp = request(1);
 
-			if(!temp || temp == 1){
+			if(request(1) == 0){
 				onewire_enum_init();
 				onewire_enum_next();
 
