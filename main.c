@@ -98,31 +98,31 @@ void prog(){
 
 		softTimer++;
 		if(softTimer > 0x4F){
+			switch(check){
+				case 0:
+					DtConvertAll();
+					break;
+				case 1:
+					Dt_read(0);
+					break;
+				case 2:
+					Dt_read(1);
+					break;
+				case 3:
+					Dt_calc(0);
+					Dt_calc(1);
+					break;
+				case 4:
+					BRregular();
+					break;
+			}
+
 			check++;
-			if(check > 5) check = 0;
+			if(check > 4) check = 0;
 			softTimer = 0;
 		}
 
-		switch(check){
-			case 0:
-				DtConvertAll();
-				break;
-			case 1:
-				Dt_read(0);
-				break;
-			case 2:
-				Dt_read(1);
-				break;
-			case 3:
-				Dt_calc(0);
-				break;
-			case 4:
-				Dt_calc(1);
-				break;
-			case 5:
-				BRregular();
-				break;
-		}
+
 
 		if(Thermometer[0]->online) StrTemp(0, 3, 0);
 		if(Thermometer[1]->online) StrTemp(15, 3, 1);
